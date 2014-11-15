@@ -29,52 +29,53 @@ services
 
 * totals( )
 
-    {
-      annotations: 20647,
-      tags: 26342,
-      lastCreated: 173894282683,
-      lastUpdated: 173894283683
-    }
+
+`{
+  annotations: 20647,
+  tags: 26342,
+  lastCreated: 173894282683,
+  lastUpdated: 173894283683
+}`
 
 * activity( period )
 
+`{
+  activity: [
     {
-      activity: [
-        {
-          date: 173894283683,
-          annotationsCreated: 47,
-          tagsCreated: 2,
-          tagsUsed: 84, /* possible? */
-          activeUsers: 2
-        },
+      date: 173894283683,
+      annotationsCreated: 47,
+      tagsCreated: 2,
+      tagsUsed: 84, /* possible? */
+      activeUsers: 2
+    },
 
-        {
-          date: 173894282683,
-          annotationsCreated: 20,
-          tagsCreated: 3,
-          tagsUsed: 23,
-          activeUsers: 3
-        }
-      ]
+    {
+      date: 173894282683,
+      annotationsCreated: 20,
+      tagsCreated: 3,
+      tagsUsed: 23,
+      activeUsers: 3
     }
+  ]
+}`
 
 * userTotals( )
 
+`{
+  users: [
     {
-      users: [
-        {
-          user: 'rmw',
-          annotations: 300,
-          tagsCreated: 34,
-          tagsUsed: 96
-        },
+      user: 'rmw',
+      annotations: 300,
+      tagsCreated: 34,
+      tagsUsed: 96
+    },
 
-        {
-          user: 'jharvard',
-          annotations: 214,
-          tagsCreated: 24,
-          tagsUsed: 46
-        }
-      ]
+    {
+      user: 'jharvard',
+      annotations: 214,
+      tagsCreated: 24,
+      tagsUsed: 46
     }
+  ]
+}`
       
