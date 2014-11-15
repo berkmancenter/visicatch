@@ -30,16 +30,19 @@ services
 * totals( )
 
 
-`{
+```
+{
   annotations: 20647,
   tags: 26342,
   lastCreated: 173894282683,
   lastUpdated: 173894283683
-}`
+}
+```
 
 * activity( period )
 
-`{
+```
+{
   activity: [
     {
       date: 173894283683,
@@ -57,11 +60,13 @@ services
       activeUsers: 3
     }
   ]
-}`
+}
+```
 
 * userTotals( )
 
-`{
+```
+{
   users: [
     {
       user: 'rmw',
@@ -77,5 +82,6 @@ services
       tagsUsed: 46
     }
   ]
-}`
+}
+```
       
