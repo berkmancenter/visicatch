@@ -3,11 +3,9 @@
 
   var _options = { };
 
-  $.fn.ltiTotals = function( activityService ) {
-    var totals = activityService.totals();
-
+  $.fn.ltiTotals = function( scope ) {
     this.each( function( ) {
-      $( this ).html( '<b>Total Annotations:</b> ' + totals.annotations );
+      $( this ).html( '<b>Total Annotations:</b> ' + scope.totals.annotations );
     } );
   };
 

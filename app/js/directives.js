@@ -4,10 +4,12 @@
 
 var visicatchDirectives = angular.module( 'visicatchDirectives', [] );
 
-visicatchDirectives.directive( 'ltiTotals', function() {
+visicatchDirectives.directive( 'ltiTotals', [ '$interval', function( interval ) {
   return {
-    restrict: 'E',
+    restrict: 'C',
     scope: '=',
-    template: '<p><b>Total Annotations:</b> {{totals.annotations}}<p>'
+    link: function( scope, element, attrs ) {
+      element.ltiTotals( scope );
+    }
   };
-} );
+} ] );
