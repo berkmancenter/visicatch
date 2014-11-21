@@ -5,6 +5,7 @@
 var visicatchApp = angular.module( 'visicatchApp', [
   'ngRoute',
 
+  'visicatchSvcs',
   'visicatchCtrls'
 ] );
 
