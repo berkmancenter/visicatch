@@ -6,10 +6,12 @@
   "license": "GPL-2.0",
   "private": true,
   "dependencies": {
-    "angular": "1.2.x",
-    "angular-mocks": "~1.2.x",
+    "angular": "1.2.26",
+    "angular-mocks": "1.2.26",
     "jquery": "1.10.2",
     "bootstrap": "~3.1.1",
-    "angular-route": "~1.2.x"
+    "d3": "latest",
+    "angular-route": "1.2.26",
+    "angular-sanitize": "1.2.26"
   }
 }

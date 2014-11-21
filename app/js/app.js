@@ -4,9 +4,11 @@
 
 var visicatchApp = angular.module( 'visicatchApp', [
   'ngRoute',
+  'ngSanitize',
 
   'visicatchSvcs',
-  'visicatchCtrls'
+  'visicatchCtrls',
+  'visicatchDirectives'
 ] );
 
 visicatchApp.config( [ '$routeProvider',

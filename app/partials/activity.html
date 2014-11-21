@@ -8,7 +8,9 @@
     <div class="col-md-10">
       <!-- Body -->
 
-      <p><b>Total annotations:</b> {{totals.annotations}}</p>
+      <p ng-bind-html="totals.annotations"></p>
+
+      <lti-totals></lti-totals>
     </div>
 
   </div>
