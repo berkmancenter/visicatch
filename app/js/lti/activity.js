@@ -25,14 +25,13 @@
 
     var activity = activityService.activity( options.period );
 
-
     this.each( function( ) {
       var act, d;
       $.each( activity.activity, function( ) {
         act = this;
         d = fff.parse( act.date );
 
-        $.each( _fields, function( i ) {
+        $.each( fields, function( i ) {
           split[ i ].push( { date: d, value: act[ this ] } );
         } );
       } );
