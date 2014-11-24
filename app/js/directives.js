@@ -17,7 +17,9 @@ visicatchDirectives.directive( 'ltiActivity', [ 'Activity', function( Activity )
   return {
     restrict: 'C',
     link: function( scope, element, attrs ) {
-      element.ltiActivity( Activity );
+      scope.$watch( 'period', function( newValue, oldValue ) {
+        element.ltiActivity( Activity, scope.period );
+      }, true );
     }
   };
 } ] );

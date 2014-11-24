@@ -8,8 +8,8 @@
     return d;
   }
 
-  $.fn.ltiActivity = function( activityService ) {
-    var activity = activityService.activity( 23 );
+  $.fn.ltiActivity = function( activityService, period ) {
+    var activity = activityService.activity( period );
 
     this.each( function( ) {
       var split = [

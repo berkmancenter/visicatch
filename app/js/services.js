@@ -16,7 +16,7 @@ visicatchSvcs.factory( 'Activity', function( ) {
       // period - in days
 
       var data = [];
-      var date = $.now();
+      var date = $.now() - ( 86400000 * period );
       var annotationsCreated = 47;
       var tagsCreated = 2;
       var activeUsers = 2;
