@@ -1,30 +1,40 @@
 ;( function( $, undefined ) {
+  var _fields = [ 'annotationsCreated', 'tagsCreated', 'activeUsers' ];
+
+  var _defaults = {
+    period: 14
+  };
+
+  $.each( _fields, function( ) {
+    _defaults[ this ] = true;
+  } );
 
   var fff = d3.time.format('%Y-%m-%d');
 
-  function convertDate(d) {
-    var fff = d3.time.format('%Y-%m-%d');
-    d[x_accessor] = fff.parse(d[x_accessor]);
-    return d;
-  }
+  $.fn.ltiActivity = function( activityService, options ) {
+    options = $.extend( { }, _defaults, options );
 
-  $.fn.ltiActivity = function( activityService, period ) {
-    var activity = activityService.activity( period );
+    var fields = [ ];
+    var split = [ ];
+    $.each( _fields, function( ) {
+      if ( options[ this ] ) {
+        fields.push( this );
+        split.push( [ ] );
+      }
+    } );
+
+    var activity = activityService.activity( options.period );
+
 
     this.each( function( ) {
-      var split = [
-        [],
-        [],
-        []
-      ];
-
-      var d;
+      var act, d;
       $.each( activity.activity, function( ) {
-        d = fff.parse( this.date );
+        act = this;
+        d = fff.parse( act.date );
 
-        split[0].push( { date: d, value: this.annotationsCreated } );
-        split[1].push( { date: d, value: this.tagsCreated } );
-        split[2].push( { date: d, value: this.activeUsers } );
+        $.each( _fields, function( i ) {
+          split[ i ].push( { date: d, value: act[ this ] } );
+        } );
       } );
 
       data_graphic( {

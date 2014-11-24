@@ -11,22 +11,42 @@
       <div class="lti-totals"></div>
 
       <section class="activity">
-        <label>
-          <input type="radio" ng-model="period" value="7" name="period">
-          <span>1 week</span>
-        </label>
+        <div>
+          <label>
+            <input type="radio" ng-model="period" value="7" name="period">
+            <span>1 week</span>
+          </label>
 
-        <label>
-          <input type="radio" ng-model="period" value="14" name="period">
-          <span>2 weeks</span>
-        </label>
+          <label>
+            <input type="radio" ng-model="period" value="14" name="period">
+            <span>2 weeks</span>
+          </label>
 
-        <label>
-          <input type="radio" ng-model="period" value="30" name="period">
-          <span>3 month</span>
-        </label>
+          <label>
+            <input type="radio" ng-model="period" value="30" name="period">
+            <span>3 month</span>
+          </label>
+        </div>
 
-        <div id="activity" class="lti-activity" ng-model="period"></div>
+        <div>
+          <label>
+            <input type="checkbox" ng-model="annotationsCreated" name="annotationsCreated">
+            <span>Annotations Created</span>
+          </label>
+
+          <label>
+            <input type="checkbox" ng-model="tagsCreated" name="tagsCreated">
+            <span>Tags Created</span>
+          </label>
+
+          <label>
+            <input type="checkbox" ng-model="activeUsers" name="activeUsers">
+            <span>Active Users</span>
+          </label>
+        </div>
+
+
+        <div id="activity" class="lti-activity"></div>
       </section>
     </div>
 
