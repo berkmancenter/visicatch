@@ -16,7 +16,7 @@ visicatchSvcs.factory( 'Activity', function( ) {
       return {
         activity: [
           {
-            date: $.now(),
+            date: '2014-11-24',
             annotationsCreated: 47,
             tagsCreated: 2,
             tagsUsed: 84, /* possible? */
@@ -24,11 +24,19 @@ visicatchSvcs.factory( 'Activity', function( ) {
           },
 
           {
-            date: $.now() - 86400,
+            date: '2014-11-23',
             annotationsCreated: 20,
             tagsCreated: 3,
             tagsUsed: 23,
             activeUsers: 3
+          },
+
+          {
+            date: '2014-11-22',
+            annotationsCreated: 32,
+            tagsCreated: 1,
+            tagsUsed: 12,
+            activeUsers: 2
           }
         ]
       }
