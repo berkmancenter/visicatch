@@ -5,30 +5,35 @@ Reporting and datavis for the Common Annotation, Tagging, and Citation at Harvar
 
 This project is a collection of RequireJS modules that accept as dependencies any services that implement the definitions below.
 
-modules
+widgets
 -------
 
-### Totals
+### ltiTotals
 
 Displays the real-time totals for annotations and tags.
 
 Requires: ActivityService.
 
-### PeriodActivity
+### ltiPeriodActvitiy
+
+Time graph of annotation, tag (created & used), & user activity.
 
 Requires: ActivityService.
 
-### UserActivity
+### ltiUserActivity
+
+Stacked bar graph of all user activity, e.g., total annotations & tags.
 
 Requires: ActivityService.
 
 services
 --------
 
+Services are objects having methods that the widgets above can call to retrieve data needed for visualization.
+
 ### ActivityService
 
 * totals( )
-
 
 ```
 {
