@@ -9,7 +9,7 @@
   }
 
   $.fn.ltiActivity = function( activityService ) {
-    var activity = activityService.activity();
+    var activity = activityService.activity( 23 );
 
     this.each( function( ) {
       var split = [
@@ -30,8 +30,8 @@
       data_graphic( {
         title: 'Activity',
         data: split,
-        width: 480,
-        height: 320,
+        width: 640,
+        height: 480,
         target: '#' + this.id,
         x_accessor: 'date',
         y_accessor: 'value'
