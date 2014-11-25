@@ -6,34 +6,74 @@ Reporting and datavis for the Common Annotation, Tagging, and Citation at Harvar
 This project is a collection of RequireJS modules that accept as dependencies any services that implement the definitions below.
 
 widgets
--------
+=======
 
-### ltiTotals
+ltiTotals
+---------
 
 Displays the real-time totals for annotations and tags.
 
 Requires: ActivityService.
 
-### ltiPeriodActvitiy
+ltiPeriodActvitiy
+-----------------
 
-Time graph of annotation, tag (created & used), & user activity.
+Time graph of annotations created, tags created, & users active.
 
 Requires: ActivityService.
 
-### ltiUserActivity
+```
+$( '.lti-activity' ).ltiActivity( annotationService, options );
+```
+
+### Options
+
+#### period
+
+Number of days worth of data to request from ActivityService. Widget can handle any granularity of data, see the period option on the ActivityService's activity method below.
+
+Default: 14
+
+#### annotationsCreated
+
+true if widget should show Annotations Created line.
+
+Default: true
+
+#### tagsCreated
+
+true if widget should show Tags Created line.
+
+Default: true
+
+#### activeUsers
+
+true if widget should show Active Users line.
+
+Default: true
+
+#### legendTarget
+
+CSS selector for an element into which the widget should place the legend. The legend sits outside the element where ltiActivity is creating the graph.
+
+Default: '.lti-activity-legend'
+
+ltiUserActivity
+---------------
 
 Stacked bar graph of all user activity, e.g., total annotations & tags.
 
 Requires: ActivityService.
 
 services
---------
+========
 
 Services are objects having methods that the widgets above can call to retrieve data needed for visualization.
 
-### ActivityService
+ActivityService
+---------------
 
-* totals( )
+### totals( )
 
 ```
 {
@@ -44,13 +84,22 @@ Services are objects having methods that the widgets above can call to retrieve 
 }
 ```
 
-* activity( period )
+### activity( period )
+
+Requests activity data from an LTS backend.
+
+#### period
+
+Number of days of data to query. It is up to the LTS to choose the granularity of the data returned. For example, if the period requested is 14 days, the result can have one object for each day. However, if the period requested is 90 days (3 months), the result can have one object for week that contains average data for that week.
+
+
+#### Result
 
 ```
 {
   activity: [
     {
-      date: 173894283683,
+      date: '2014-11-20',
       annotationsCreated: 47,
       tagsCreated: 2,
       tagsUsed: 84, /* possible? */
@@ -58,7 +107,7 @@ Services are objects having methods that the widgets above can call to retrieve 
     },
 
     {
-      date: 173894282683,
+      date: '2014-11-21',
       annotationsCreated: 20,
       tagsCreated: 3,
       tagsUsed: 23,
@@ -68,7 +117,7 @@ Services are objects having methods that the widgets above can call to retrieve 
 }
 ```
 
-* userTotals( )
+### userTotals( )
 
 ```
 {
