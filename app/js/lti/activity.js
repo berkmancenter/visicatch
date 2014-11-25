@@ -14,13 +14,10 @@
   $.fn.ltiActivity = function( activityService, options ) {
     options = $.extend( { }, _defaults, options );
 
-    var fields = [ ];
     var split = [ ];
+
     $.each( _fields, function( ) {
-      if ( options[ this ] ) {
-        fields.push( this );
-        split.push( [ ] );
-      }
+      split.push( [ ] );
     } );
 
     var activity = activityService.activity( options.period );
@@ -31,7 +28,7 @@
         act = this;
         d = fff.parse( act.date );
 
-        $.each( fields, function( i ) {
+        $.each( _fields, function( i ) {
           split[ i ].push( { date: d, value: act[ this ] } );
         } );
       } );
@@ -44,6 +41,11 @@
         target: '#' + this.id,
         x_accessor: 'date',
         y_accessor: 'value'
+      } );
+
+      var lines = $( '.main-line' );
+      $.each( _fields, function( i ) {
+        lines.eq( i ).toggle( options[ _fields[ i ] ] );
       } );
     } );
   };
