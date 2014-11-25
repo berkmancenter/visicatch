@@ -40,8 +40,8 @@
 
         <div>
           <label>
-            <input type="checkbox" ng-model="annotationsCreated">
-            <span>Annotations Created</span>
+            <input type="checkbox" ng-model="activeUsers">
+            <span>Active Users</span>
           </label>
 
           <label>
@@ -50,13 +50,16 @@
           </label>
 
           <label>
-            <input type="checkbox" ng-model="activeUsers">
-            <span>Active Users</span>
+            <input type="checkbox" ng-model="annotationsCreated">
+            <span>Annotations Created</span>
           </label>
         </div>
 
 
-        <div id="activity" class="lti-activity"></div>
+        <div class="lti-activity-legend"></div>
+
+        <div id="activity" class="lti-activity">
+        </div>
       </section>
     </div>
 

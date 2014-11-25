@@ -2,7 +2,8 @@
   var _fields = [ 'annotationsCreated', 'tagsCreated', 'activeUsers' ];
 
   var _defaults = {
-    period: 14
+    period: 14,
+    legendTarget: '.lti-activity-legend'
   };
 
   $.each( _fields, function( ) {
@@ -23,6 +24,9 @@
     var activity = activityService.activity( options.period );
 
     this.each( function( ) {
+      var rootId = this.id;
+
+
       var act, d;
       $.each( activity.activity, function( ) {
         act = this;
@@ -31,21 +35,31 @@
         $.each( _fields, function( i ) {
           split[ i ].push( { date: d, value: act[ this ] } );
         } );
+
       } );
 
       data_graphic( {
+        target: '#' + rootId,
         title: 'Activity',
         data: split,
+        legend: _fields,
+        legend_target: options.legendTarget,
         width: 640,
         height: 480,
-        target: '#' + this.id,
         x_accessor: 'date',
-        y_accessor: 'value'
+        y_accessor: 'value',
+        rollover_callback: function( d, i ) {
+          $( '#' + rootId + ' .active_datapoint' ).html( 'foo' );
+        }
       } );
 
       var lines = $( '.main-line' );
       $.each( _fields, function( i ) {
-        lines.eq( i ).toggle( options[ _fields[ i ] ] );
+        if ( options[ _fields[ i ] ] ) {
+          lines.eq( _fields.length - 1 - i ).removeAttr( 'display' );
+        } else {
+          lines.eq( _fields.length - 1 - i ).attr( 'display', 'none' );
+        }
       } );
     } );
   };

@@ -6,12 +6,12 @@ var visicatchSvcs = angular.module( 'visicatchSvcs', [ ] );
 
 visicatchSvcs.factory( 'Activity', function( ) {
   var data = [];
-  var date = $.now() - ( 86400000 * 365 );
+  var date = $.now() - ( 86400000 * 180 );
   var annotationsCreated = 47;
   var tagsCreated = 2;
   var activeUsers = 2;
 
-  for ( var day = 0; day < 365; day++ ) {
+  for ( var day = 0; day < 180; day++ ) {
     data.push( {
       date: new Date( date ).toJSON().substr( 0, 10 ),
       annotationsCreated: annotationsCreated,
