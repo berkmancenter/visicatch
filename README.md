@@ -89,7 +89,7 @@ var somedayTotalAnno = annotation.total( '2014-11-27' );
 ```json
 {
   "date": "2014-11-27",
-  "total": 200647
+  "total": 20647
 }
 ```
 
@@ -140,13 +140,13 @@ Deafult: 14
   {
     "date": "2014-11-27",
     "created": 47,
-    "total": 200647
+    "total": 20647
   },
 
   {
     "date": "2014-11-26",
     "created": 20,
-    "total": 200600
+    "total": 20600
   }
 ]
 ```

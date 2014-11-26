@@ -3,11 +3,11 @@
 
   var _options = { };
 
-  $.fn.ltiTotals = function( activityService ) {
-    var totals = activityService.totals();
+  $.fn.ltiTotals = function( annotation ) {
+    var totalAnno = annotation.total();
 
     this.each( function( ) {
-      $( this ).html( '<b>Total Annotations:</b> ' + totals.annotations );
+      $( this ).html( '<b>Total Annotations:</b> ' + totalAnno.total );
     } );
   };
 

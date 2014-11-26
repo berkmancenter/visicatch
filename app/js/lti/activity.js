@@ -12,23 +12,28 @@
 
   var fff = d3.time.format('%Y-%m-%d');
 
-  $.fn.ltiActivity = function( activityService, options ) {
+  $.fn.ltiActivity = function( annotation, options ) {
     options = $.extend( { }, _defaults, options );
 
+    /*
     var split = [ ];
 
     $.each( _fields, function( ) {
       split.push( [ ] );
     } );
+    */
 
-    var activity = activityService.activity( options.period );
+    var annoActivity = annotation.activity( options.period );
+    $.each( annoActivity, function() {
+      this.date = fff.parse( this.date );
+    } );
 
     this.each( function( ) {
       var rootId = this.id;
 
-
+      /*
       var act, d;
-      $.each( activity.activity, function( ) {
+      $.each( annoActivity, function( ) {
         act = this;
         d = fff.parse( act.date );
 
@@ -37,22 +42,21 @@
         } );
 
       } );
+      */
 
       data_graphic( {
         target: '#' + rootId,
         title: 'Activity',
-        data: split,
-        legend: _fields,
-        legend_target: options.legendTarget,
+        data: annoActivity, //split,
+        //legend: _fields,
+        //legend_target: options.legendTarget,
         width: 640,
         height: 480,
         x_accessor: 'date',
-        y_accessor: 'value',
-        rollover_callback: function( d, i ) {
-          $( '#' + rootId + ' .active_datapoint' ).html( 'foo' );
-        }
+        y_accessor: 'created'
       } );
 
+      /*
       var lines = $( '.main-line' );
       $.each( _fields, function( i ) {
         if ( options[ _fields[ i ] ] ) {
@@ -61,6 +65,7 @@
           lines.eq( _fields.length - 1 - i ).attr( 'display', 'none' );
         }
       } );
+      */
     } );
   };
 
