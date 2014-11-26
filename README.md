@@ -15,7 +15,7 @@ Displays the real-time totals for annotations and tags.
 
 Requires: Annotation, Tag
 
-```
+```javascript
 $( '.lti-totals' ).ltiTotals( annotation, tag );
 ```
 
@@ -86,7 +86,7 @@ var currentTotalAnno = annotation.total( );
 var somedayTotalAnno = annotation.total( '2014-11-27' );
 ```
 
-```
+```json
 {
   date: '2014-11-27',
   total: 200647
