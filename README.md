@@ -26,7 +26,7 @@ Time graph of annotations created, tags created, & users active.
 
 Requires: Annotation, Tag, User
 
-```
+```javascript
 $( '.lti-activity' ).ltiActivity( annotation, tag, user, options );
 ```
 
@@ -81,15 +81,15 @@ Annotation
 
 Requests the total number of annotations on a given date, or the current total if date is omitted.
 
-```
+```javascript
 var currentTotalAnno = annotation.total( );
 var somedayTotalAnno = annotation.total( '2014-11-27' );
 ```
 
 ```json
 {
-  date: '2014-11-27',
-  total: 200647
+  "date": "2014-11-27",
+  "total": 200647
 }
 ```
 
@@ -97,23 +97,23 @@ var somedayTotalAnno = annotation.total( '2014-11-27' );
 
 Requests the total number of annotations grouped by User on a given date, or the current total if date is omitted.
 
-```
+```javascript
 var currentTotalAnnoByUser = annotation.userTotals( );
 var somedayTotalAnnoByUser = annotation.userTotals( '2014-11-27' );
 ```
 
-```
+```json
 [
   {
-    date: '2014-11-27',
-    user: 'rmw',
-    created: 300,
+    "date": "2014-11-27",
+    "user": "rmw",
+    "created": 300,
   },
 
   {
-    date: '2014-11-27',
-    user: 'jharvard',
-    created: 214,
+    "date": "2014-11-27",
+    "user": "jharvard",
+    "created": 214,
   }
 ]
 ```
@@ -122,7 +122,7 @@ var somedayTotalAnnoByUser = annotation.userTotals( '2014-11-27' );
 
 Requests annotation activity data from an LTS backend.
 
-```
+```javascript
 var annoActivityTwoWeeks = annotation.activity( );
 var annoActivityThreeMonths = annotation.activity( 30 );
 ```
@@ -135,18 +135,18 @@ Deafult: 14
 
 #### Result
 
-```
+```json
 [
   {
-    date: '2014-11-27',
-    created: 47,
-    total: 200647,
+    "date": "2014-11-27",
+    "created": 47,
+    "total": 200647,
   },
 
   {
-    date: '2014-11-26',
-    created: 20,
-    total: 200600,
+    "date": "2014-11-26",
+    "created": 20,
+    "total": 200600,
   }
 ]
 ```
