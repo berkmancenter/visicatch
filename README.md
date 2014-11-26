@@ -13,24 +13,28 @@ ltiTotals
 
 Displays the real-time totals for annotations and tags.
 
-Requires: ActivityService.
+Requires: Annotation, Tag
+
+```
+$( '.lti-totals' ).ltiTotals( annotation, tag );
+```
 
 ltiPeriodActvitiy
 -----------------
 
 Time graph of annotations created, tags created, & users active.
 
-Requires: ActivityService.
+Requires: Annotation, Tag, User
 
 ```
-$( '.lti-activity' ).ltiActivity( annotationService, options );
+$( '.lti-activity' ).ltiActivity( annotation, tag, user, options );
 ```
 
 ### Options
 
 #### period
 
-Number of days worth of data to request from ActivityService. Widget can handle any granularity of data, see the period option on the ActivityService's activity method below.
+Number of days worth of data to request from the services. Widget can handle any granularity of data, see the period option on the services' activity methods below.
 
 Default: 14
 
@@ -58,84 +62,96 @@ CSS selector for an element into which the widget should place the legend. The l
 
 Default: '.lti-activity-legend'
 
-ltiUserActivity
+ltiUserTotals
 ---------------
 
-Stacked bar graph of all user activity, e.g., total annotations & tags.
+Stacked bar graph of all users' total annotations & tags.
 
-Requires: ActivityService.
+Requires: User
 
 services
 ========
 
 Services are objects having methods that the widgets above can call to retrieve data needed for visualization.
 
-ActivityService
----------------
+Annotation
+----------
 
-### totals( )
+### total( date )
+
+Requests the total number of annotations on a given date, or the current total if date is omitted.
+
+```
+var currentTotalAnno = annotation.total( );
+var somedayTotalAnno = annotation.total( '2014-11-27' );
+```
 
 ```
 {
-  annotations: 20647,
-  tags: 26342,
-  lastCreated: 173894282683,
-  lastUpdated: 173894283683
+  date: '2014-11-27',
+  total: 200647
 }
+```
+
+### userTotals( date )
+
+Requests the total number of annotations grouped by User on a given date, or the current total if date is omitted.
+
+```
+var currentTotalAnnoByUser = annotation.userTotals( );
+var somedayTotalAnnoByUser = annotation.userTotals( '2014-11-27' );
+```
+
+```
+[
+  {
+    date: '2014-11-27',
+    user: 'rmw',
+    created: 300,
+  },
+
+  {
+    date: '2014-11-27',
+    user: 'jharvard',
+    created: 214,
+  }
+]
 ```
 
 ### activity( period )
 
-Requests activity data from an LTS backend.
+Requests annotation activity data from an LTS backend.
+
+```
+var annoActivityTwoWeeks = annotation.activity( );
+var annoActivityThreeMonths = annotation.activity( 30 );
+```
 
 #### period
 
 Number of days of data to query. It is up to the LTS to choose the granularity of the data returned. For example, if the period requested is 14 days, the result can have one object for each day. However, if the period requested is 90 days (3 months), the result can have one object for week that contains average data for that week.
 
+Deafult: 14
 
 #### Result
 
 ```
-{
-  activity: [
-    {
-      date: '2014-11-20',
-      annotationsCreated: 47,
-      tagsCreated: 2,
-      tagsUsed: 84, /* possible? */
-      activeUsers: 2
-    },
+[
+  {
+    date: '2014-11-27',
+    created: 47,
+    total: 200647,
+  },
 
-    {
-      date: '2014-11-21',
-      annotationsCreated: 20,
-      tagsCreated: 3,
-      tagsUsed: 23,
-      activeUsers: 3
-    }
-  ]
-}
+  {
+    date: '2014-11-26',
+    created: 20,
+    total: 200600,
+  }
+]
 ```
 
-### userTotals( )
+Tag
+---
 
-```
-{
-  users: [
-    {
-      user: 'rmw',
-      annotations: 300,
-      tagsCreated: 34,
-      tagsUsed: 96
-    },
-
-    {
-      user: 'jharvard',
-      annotations: 214,
-      tagsCreated: 24,
-      tagsUsed: 46
-    }
-  ]
-}
-```
       
