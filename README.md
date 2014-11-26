@@ -107,13 +107,13 @@ var somedayTotalAnnoByUser = annotation.userTotals( '2014-11-27' );
   {
     "date": "2014-11-27",
     "user": "rmw",
-    "created": 300,
+    "created": 300
   },
 
   {
     "date": "2014-11-27",
     "user": "jharvard",
-    "created": 214,
+    "created": 214
   }
 ]
 ```
@@ -124,7 +124,7 @@ Requests annotation activity data from an LTS backend.
 
 ```javascript
 var annoActivityTwoWeeks = annotation.activity( );
-var annoActivityThreeMonths = annotation.activity( 30 );
+var annoActivityThreeMonths = annotation.activity( 90 );
 ```
 
 #### period
@@ -140,13 +140,13 @@ Deafult: 14
   {
     "date": "2014-11-27",
     "created": 47,
-    "total": 200647,
+    "total": 200647
   },
 
   {
     "date": "2014-11-26",
     "created": 20,
-    "total": 200600,
+    "total": 200600
   }
 ]
 ```
@@ -154,4 +154,78 @@ Deafult: 14
 Tag
 ---
 
-      
+### total( date )
+
+Requests the total number of tags on a given date, or the current total if date is omitted.
+
+```javascript
+var currentTotalTag = tag.total( );
+var somedayTotalTag = tag.total( '2014-11-27' );
+```
+
+```json
+{
+  "date": "2014-11-27",
+  "total": 297
+}
+```
+
+### userTotals( date )
+
+Requests the total number of tags grouped by User on a given date, or the current total if date is omitted.
+
+```javascript
+var currentTotalTagByUser = tag.userTotals( );
+var somedayTotalTagByUser = tag.userTotals( '2014-11-27' );
+```
+
+```json
+[
+  {
+    "date": "2014-11-27",
+    "user": "rmw",
+    "created": 2,
+    "used": 24
+  },
+
+  {
+    "date": "2014-11-27",
+    "user": "jharvard",
+    "created": 1,
+    "used": 12
+  }
+]
+```
+
+### activity( period )
+
+Requests tag activity data from an LTS backend.
+
+```javascript
+var tagActivityTwoWeeks = tag.activity( );
+var tagActivityThreeMonths = tag.activity( 90 );
+```
+
+#### period
+
+Number of days of data to query. It is up to the LTS to choose the granularity of the data returned. For example, if the period requested is 14 days, the result can have one object for each day. However, if the period requested is 90 days (3 months), the result can have one object for week that contains average data for that week.
+
+Deafult: 14
+
+#### Result
+
+```json
+[
+  {
+    "date": "2014-11-27",
+    "created": 3,
+    "total": 297,
+  },
+
+  {
+    "date": "2014-11-26",
+    "created": 4,
+    "total": 294,
+  }
+]
+```
