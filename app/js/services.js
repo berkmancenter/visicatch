@@ -27,10 +27,7 @@ visicatchSvcs.factory( 'Annotation', function( ) {
 
   return {
     total: function( date ) {
-      return {
-        date: '2014-11-27',
-        total: 20647
-      };
+      return $.merge( {}, data[ data.length - 1 ] );
     },
 
     activity: function( period ) {
@@ -77,48 +74,42 @@ visicatchSvcs.factory( 'Tag', function( ) {
   };
 } );
 
-/*
 visicatchSvcs.factory( 'User', function( ) {
   var data = [];
-  var date = $.now() - ( 86400000 * 180 );
-  var activeUsers = 2;
+  var date = $.now();
+  var usersCreated = 2;
+  var total = 23;
 
   for ( var day = 0; day < 180; day++ ) {
     data.push( {
       date: new Date( date ).toJSON().substr( 0, 10 ),
-      annotationsCreated: annotationsCreated,
-      tagsCreated: tagsCreated,
-      tagsUsed: 84,
-      activeUsers: activeUsers
+      created: usersCreated,
+      total: total,
+      active: Math.floor( Math.random() * 2 )
     } );
 
-    date += 86400000;
-    annotationsCreated += Math.floor( Math.random() * 10 * ( Math.random() >= 0.5 ? 1 : -1 ) );
-    tagsCreated += Math.floor( Math.random() * 5 * ( Math.random() >= 0.5 ? 1 : -1 ) );
-    activeUsers += Math.floor( Math.random() * 5 * ( Math.random() >= 0.5 ? 1 : -1 ) );
+    date -= 86400000;
+    usersCreated += Math.floor( Math.random() * 2 * ( Math.random() >= 0.5 ? 1 : -1 ) );
+    usersCreated = usersCreated > 0 ? usersCreated : 0;
 
-    annotationsCreated = annotationsCreated > 0 ? annotationsCreated : 0;
-    tagsCreated = tagsCreated > 0 ? tagsCreated : 0;
-    activeUsers = activeUsers > 0 ? activeUsers : 0;
+    total -= usersCreated;
+    total = total > 0 ? total : 0;
   }
 
+  data.reverse();
+
   return {
-    totals: function( ) {
-      return {
-        annotations: 20647
-      };
+    total: function( date ) {
+      return $.merge( {}, data[ data.length - 1 ] );
     },
 
     activity: function( period ) {
       // period - in days
 
-      return {
-        activity: data.slice( -period )
-      }
+      return JSON.parse( JSON.stringify( data.slice( -period ) ) );
     }
   };
 } );
-*/
 
 /*
 visicatchSvcs.factory( 'Annotation', function( ) {

@@ -13,21 +13,21 @@ visicatchDirectives.directive( 'ltiTotals', [ '$interval', 'Annotation', functio
   };
 } ] );
 
-visicatchDirectives.directive( 'ltiActivity', [ 'Annotation', 'Tag', function( Annotation, Tag ) {
+visicatchDirectives.directive( 'ltiActivity', [ 'Annotation', 'Tag', 'User', function( Annotation, Tag, User ) {
   return {
     restrict: 'C',
     link: function( scope, element, attrs ) {
       scope.$watch( 'period', function( ) {
-        element.ltiActivity( Annotation, Tag, scope );
+        element.ltiActivity( Annotation, Tag, User, scope );
       }, true );
       scope.$watch( 'annotationsCreated', function( ) {
-        element.ltiActivity( Annotation, Tag, scope );
+        element.ltiActivity( Annotation, Tag, User, scope );
       }, true );
       scope.$watch( 'tagsCreated', function( ) {
-        element.ltiActivity( Annotation, Tag, scope );
+        element.ltiActivity( Annotation, Tag, User, scope );
       }, true );
       scope.$watch( 'activeUsers', function( ) {
-        element.ltiActivity( Annotation, Tag, scope );
+        element.ltiActivity( Annotation, Tag, User, scope );
       }, true );
     }
   };

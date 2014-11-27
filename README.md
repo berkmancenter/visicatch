@@ -245,7 +245,7 @@ var somedayTotalUser = user.total( '2014-11-27' );
 ```json
 {
   "date": "2014-11-27",
-  "total": 297
+  "total": 23
 }
 ```
 
