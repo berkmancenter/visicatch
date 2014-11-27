@@ -229,3 +229,57 @@ Deafult: 14
   }
 ]
 ```
+
+User
+----
+
+### total( date )
+
+Requests the total number of users on a given date, or the current total if date is omitted.
+
+```javascript
+var currentTotalUser = user.total( );
+var somedayTotalUser = user.total( '2014-11-27' );
+```
+
+```json
+{
+  "date": "2014-11-27",
+  "total": 297
+}
+```
+
+### activity( period )
+
+Requests user activity data from an LTS backend.
+
+```javascript
+var userActivityTwoWeeks = user.activity( );
+var userActivityThreeMonths = user.activity( 90 );
+```
+
+#### period
+
+Number of days of data to query. It is up to the LTS to choose the granularity of the data returned. For example, if the period requested is 14 days, the result can have one object for each day. However, if the period requested is 90 days (3 months), the result can have one object for week that contains average data for that week.
+
+Deafult: 14
+
+#### Result
+
+```json
+[
+  {
+    "date": "2014-11-27",
+    "created": 2,
+    "total": 23,
+    "active": 2,
+  },
+
+  {
+    "date": "2014-11-26",
+    "created": 1,
+    "total": 21,
+    "active": 3,
+  }
+]
+```
