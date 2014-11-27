@@ -12,7 +12,7 @@
 
   var fff = d3.time.format('%Y-%m-%d');
 
-  $.fn.ltiActivity = function( annotation, options ) {
+  $.fn.ltiActivity = function( annotation, tag, options ) {
     options = $.extend( { }, _defaults, options );
 
     /*
@@ -24,8 +24,19 @@
     */
 
     var annoActivity = annotation.activity( options.period );
-    $.each( annoActivity, function() {
-      this.date = fff.parse( this.date );
+    annoActivity = $.map( annoActivity, function(el) {
+      return {
+        date: fff.parse( el.date ),
+        value: el.created
+      }
+    } );
+
+    var tagActivity = tag.activity( options.period );
+    tagActivity = $.map( tagActivity, function(el) {
+      return {
+        date: fff.parse( el.date ),
+        value: el.created
+      }
     } );
 
     this.each( function( ) {
@@ -47,13 +58,13 @@
       data_graphic( {
         target: '#' + rootId,
         title: 'Activity',
-        data: annoActivity, //split,
+        data: [ annoActivity, tagActivity ],
         //legend: _fields,
         //legend_target: options.legendTarget,
         width: 640,
         height: 480,
         x_accessor: 'date',
-        y_accessor: 'created'
+        y_accessor: 'value'
       } );
 
       /*

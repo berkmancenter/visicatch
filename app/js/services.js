@@ -41,12 +41,46 @@ visicatchSvcs.factory( 'Annotation', function( ) {
   };
 } );
 
+visicatchSvcs.factory( 'Tag', function( ) {
+  var data = [];
+  var date = $.now();
+  var tagsCreated = 2;
+  var total = 297;
+
+  for ( var day = 0; day < 180; day++ ) {
+    data.push( {
+      date: new Date( date ).toJSON().substr( 0, 10 ),
+      created: tagsCreated,
+      total: total
+    } );
+
+    date -= 86400000;
+    tagsCreated += Math.floor( Math.random() * 3 * ( Math.random() >= 0.5 ? 1 : -1 ) );
+    tagsCreated = tagsCreated > 0 ? tagsCreated : 0;
+
+    total -= tagsCreated;
+    total = total > 0 ? total : 0;
+  }
+
+  data.reverse();
+
+  return {
+    total: function( date ) {
+      return $.merge( {}, data[ data.length - 1 ] );
+    },
+
+    activity: function( period ) {
+      // period - in days
+
+      return JSON.parse( JSON.stringify( data.slice( -period ) ) );
+    }
+  };
+} );
+
 /*
-visicatchSvcs.factory( 'Annotation', function( ) {
+visicatchSvcs.factory( 'User', function( ) {
   var data = [];
   var date = $.now() - ( 86400000 * 180 );
-  var annotationsCreated = 47;
-  var tagsCreated = 2;
   var activeUsers = 2;
 
   for ( var day = 0; day < 180; day++ ) {
@@ -84,7 +118,9 @@ visicatchSvcs.factory( 'Annotation', function( ) {
     }
   };
 } );
+*/
 
+/*
 visicatchSvcs.factory( 'Annotation', function( ) {
   var data = [];
   var date = $.now() - ( 86400000 * 180 );
