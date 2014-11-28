@@ -32,3 +32,12 @@ visicatchDirectives.directive( 'ltiActivity', [ 'Annotation', 'Tag', 'User', fun
     }
   };
 } ] );
+
+visicatchDirectives.directive( 'ltiUserTotals', [ 'Annotation', 'Tag', function( Annotation, Tag ) {
+  return {
+    restrict: 'C',
+    link: function( scope, element, attrs ) {
+      element.ltiUserTotals( Annotation, Tag );
+    }
+  };
+} ] );

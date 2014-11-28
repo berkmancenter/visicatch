@@ -30,6 +30,18 @@ visicatchSvcs.factory( 'Annotation', function( ) {
       return $.merge( {}, data[ data.length - 1 ] );
     },
 
+    userTotals: function( date ) {
+      return [ {
+        date: "2014-11-27",
+        user: "rmw",
+        created: 300
+      }, {
+        date: "2014-11-27",
+        user: "jharvard",
+        created: 214
+      } ];
+    },
+
     activity: function( period ) {
       // period - in days
 
